@@ -36,30 +36,32 @@ document.addEventListener('DOMContentLoaded', function() {
     musicButton.textContent = '🔇';
 });
 
-let toggleTimeout = null;
+let isPlaying = false;
+let playPromise = null;
 
 function toggleMusic() {
     const music = document.getElementById('background-music');
     const button = document.querySelector('.music-button');
 
-    if (toggleTimeout) {
-        clearTimeout(toggleTimeout);
+    if (isPlaying) {
+        music.pause();
+        isPlaying = false;
+        button.textContent = '🔇';
+        console.log('Música pausada');
+        return;
     }
 
-    toggleTimeout = setTimeout(() => {
-        if (music.paused) {
-            music.play().then(() => {
-                console.log('Música tocando');
-                button.textContent = '🔊';
-            }).catch((error) => {
-                console.error('Erro ao tentar tocar a música:', error);
-            });
-        } else {
-            music.pause();
-            console.log('Música pausada');
-            button.textContent = '🔇';
-        }
-    }, 300);
+    playPromise = music.play();
+
+    if (playPromise !== undefined) {
+        playPromise.then(() => {
+            isPlaying = true;
+            button.textContent = '🔊';
+            console.log('Música tocando');
+        }).catch((error) => {
+            console.error('Erro ao tentar tocar a música:', error);
+        });
+    }
 }
 
 // Efeito de máquina de escrever
