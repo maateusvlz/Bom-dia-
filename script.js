@@ -36,7 +36,12 @@ document.addEventListener('DOMContentLoaded', function() {
     musicButton.textContent = '🔇';
 });
 
+let isToggling = false;
+
 async function toggleMusic() {
+    if (isToggling) return;
+    isToggling = true;
+
     const music = document.getElementById('background-music');
     const button = document.querySelector('.music-button');
     if (music.paused) {
@@ -52,6 +57,8 @@ async function toggleMusic() {
         console.log('Música pausada');
         button.textContent = '🔇';
     }
+
+    isToggling = false;
 }
 
 // Efeito de máquina de escrever
