@@ -36,15 +36,20 @@ document.addEventListener('DOMContentLoaded', function() {
     musicButton.textContent = '🔇';
 });
 
-// Função para alternar mute/desmute da música
-function toggleMusic() {
+async function toggleMusic() {
     const music = document.getElementById('background-music');
     const button = document.querySelector('.music-button');
     if (music.paused) {
-        music.play();
-        button.textContent = '🔊';
+        try {
+            await music.play();
+            console.log('Música tocando');
+            button.textContent = '🔊';
+        } catch (error) {
+            console.error('Erro ao tentar tocar a música:', error);
+        }
     } else {
         music.pause();
+        console.log('Música pausada');
         button.textContent = '🔇';
     }
 }
