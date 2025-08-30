@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Você é Especial</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="message-card">
+            <div class="heart-animation">Bom dia!❤️</div>
+            <h1 class="main-message">Algumas pessoas têm um brilho que não se apaga – você é uma delas.Continue seguindo seus caminhos, porque o mundo precisa dessa luz que só você tem.</h1>
+            <p class="sub-message">não se esqueça disso, tenha um dia excelente.</p>
+            <div class="decoration-stars">
+                <span>✨</span>
+                <span>🌟</span>
+                <span>💫</span>
+            </div>
+        </div>
+        
+        <div class="floating-hearts">
+            <div class="heart">❤️</div>
+            <div class="heart">💖</div>
+            <div class="heart">💕</div>
+            <div class="heart">💗</div>
+            <div class="heart">💓</div>
+        </div>
+        
+    <button class="share-button" onclick="shareMessage()">
+        📤 Compartilhar esta mensagem
+    </button>
+    
+    <button class="music-button" onclick="toggleMusic()" title="Controlar música de fundo">
+        🔇
+    </button>
+</div>
+
+<!-- Elemento de áudio para a música de fundo -->
+<audio id="background-music" loop>
+    <source src="/Yeshua+ Holy Forever (piano & violin instrumental ).mp3" type="audio/mpeg">
+    Seu navegador não suporta o elemento de áudio.
+</audio>
+
+<script src="script.js"></script>
+</body>
+</html>

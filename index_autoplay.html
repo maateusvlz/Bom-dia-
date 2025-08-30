@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Música de Fundo Automática</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #222;
+            color: #eee;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #message {
+            display: none;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.3s ease;
+        }
+        #message:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <h1>Música de Fundo Automática</h1>
+    <audio id="background-music" loop autoplay>
+        <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_7ffc5f8f98.mp3?filename=romantic-piano-soft-background-music-143038.mp3" type="audio/mpeg" />
+        Seu navegador não suporta o elemento de áudio.
+    </audio>
+    <div id="message">Clique aqui para ativar o áudio</div>
+
+    <script>
+        const music = document.getElementById('background-music');
+        const message = document.getElementById('message');
+
+        music.volume = 0.5;
+
+        function tryPlay() {
+            music.play().catch(() => {
+                // Autoplay bloqueado, mostrar mensagem
+                message.style.display = 'block';
+            });
+        }
+
+        message.addEventListener('click', () => {
+            music.play().then(() => {
+                message.style.display = 'none';
+            }).catch(() => {
+                // Se ainda não conseguir tocar, manter mensagem
+                alert('Não foi possível ativar o áudio.');
+            });
+        });
+
+        // Tentar tocar ao carregar
+        window.addEventListener('load', tryPlay);
+    </script>
+</body>
+</html>
